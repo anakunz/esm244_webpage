@@ -1,6 +1,6 @@
 ---
 title: "Anastasia Kunz"
-image: "akunz.jpeg"
+image: "akunz.jpeg" 
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/anastasia-kunz/"
@@ -14,4 +14,4 @@ site: distill::distill_website
 
 ---
  
-Ecology enthusiast with experience in geospatial science. 
+Anastasia is currently in her first year at the Bren School of Environmental Science and Management at UCSB pursuing her Masters Degree. After receiving her bachelor's degree in Biology from UCLA, Anastasia worked for NASA DEVELOP addressing issues in environmental science through GIS and remote sensing. Anastasia is looking to apply geospatial science to effectively manage marine ecosystems.
