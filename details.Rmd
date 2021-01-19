@@ -1,0 +1,6 @@
+---
+title: "Details"
+listing: posts
+---
+
+
