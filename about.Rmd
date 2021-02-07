@@ -1,10 +1,31 @@
 ---
-title: "About this site"
+title: "Curriculum Vitae"
 description: |
-  Some additional details about the website
+  Interests | Education| Work Experience | Publications
+
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
+
+
+# Interests
+
+ * Career goals center around utilizing spatial data to foster sustainable use of our marine systems
+ * Currently living and working in Santa Barbara, California
+ * Avid beach volleyball player and aspiring surfer
+ 
+# Education
+
+  *Expected 2022* ~ Masters of Environmental Science and Management **Bren School of Environmental Science & Management, University of California, Santa Barbara** Specialization in Coastal Marine Resource Management and Conservation Planning
+  
+  *2018*  ~ Bachelors of Science from **University of California, Los Angeles**
+  
+  
+
+
+
+
+
 

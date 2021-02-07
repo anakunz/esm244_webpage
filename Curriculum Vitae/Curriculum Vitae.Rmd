@@ -1,0 +1,68 @@
+---
+title: CV
+name: Anastasia
+surname: Kunz
+position: "Masters Candidate"
+address: "Bren School of Environmental Science and Management"
+phone: (805) 680 - 7399
+email: "anastasiakunz@bren.ucsb.edu"
+github: anakunz
+linkedin: anastasia-kunz
+date: "`r format(Sys.time(), '%B %Y')`"
+aboutme: "Anastasia is an environmental researcher with experience in geospatial science."
+output: 
+  vitae::markdowncv:
+    theme: kjhealy
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+```
+
+## Interests
+
+ * Career goals center around utilizing spatial data to foster sustainable use of our marine systems
+ * Currently living and working in Santa Barbara, California
+ * Avid beach volleyball player and aspiring surfer
+
+## Education
+
+```{r}
+library(tibble)
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "Masters of Environmental Science and Management", "Expected 2022", "Donald Bren School at University of California, Santa Barbara", "Santa Barbara, California",
+  "Bachelors of Science", "2018", "University of California, Los Angeles", "Los Angeles, California",
+  "Education Abroad", "2016", "Lincoln University", "Lincoln, New Zealand"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+
+## Selected Work Experience
+
+```{r}
+tribble(
+  ~Year, ~Type, ~Desc,
+  2019, "Project Lead", "~ Leading a team of interdisciplanary researchers, Anastasia worked under NASA DEVELOP to create an ArcGIS Toolbox to assist the USGS and National Park Service in monitoring harmful eutrophication and resultant algal blooms in Rocky Mountain National Park alpine lakes",
+  2018, "Geospatial Researcher", "~ In her first project with NASA DEVELOP, Anastasia worked with the USDA Agricultural Research Service to improve species distribution modeling of crop wild relatives for the National Plant Germplasm System, utilizing NASA Earth observations and European Space Agency satellite imagery.",
+  2015, "Undergraduate Researcher", "~ Developed personal research project studying therapeutic strategies combatting toxic ⍺-synuclein oligomers characteristic to Parkinson’s disease contributing to a larger study published in Journal of Neuroscience Research."
+) %>% 
+  brief_entries(
+    glue::glue("  {Type}"),
+    Year, 
+    Desc
+  )
+```
+
+## Publications
+
+```{r}
+library(dplyr)
+knitr::write_bib(c("vitae", "tibble"), "packages.bib")
+
+bibliography_entries("packages.bib") %>%
+  arrange(desc(author$family), issued)
+# HOW DO I INPUT MY OWN PUBLICATIONS???
+```
+

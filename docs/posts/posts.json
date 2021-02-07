@@ -1,8 +1,8 @@
 [
   {
     "path": "posts/2021-01-19-welcome/",
-    "title": "welcome",
-    "description": "A short description of the post.",
+    "title": "This is my first project/blog",
+    "description": "Maybe put in urchins project from 2016?",
     "author": [
       {
         "name": "Anastasia Kunz",
@@ -11,9 +11,9 @@
     ],
     "date": "2021-01-19",
     "categories": [],
-    "contents": "\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
+    "contents": "\nTHIS IS WHERE I WILL INPUT A PROJECT?\nEdits happen here.\nTab 2:\nhow does this work?\nDistill is a publication format for scientific and technical writing, native to the web.\nLearn more about using Distill at https://rstudio.github.io/distill.\n\n\n\n",
     "preview": {},
-    "last_modified": "2021-01-19T09:10:36-08:00",
+    "last_modified": "2021-02-07T14:23:55-08:00",
     "input_file": {}
   }
 ]

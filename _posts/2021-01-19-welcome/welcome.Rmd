@@ -1,7 +1,7 @@
 ---
-title: "welcome"
+title: "This is my first project/blog"
 description: |
-  A short description of the post.
+  Maybe put in urchins project from 2016?
 author:
   - name: Anastasia Kunz
 date: 01-19-2021
@@ -11,9 +11,19 @@ output:
 ---
 
 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+
 ```
+
+## THIS IS WHERE I WILL INPUT A PROJECT 
+Edits happen here.
+
+## Tab 2:
+how does this work?
+
+
 
 Distill is a publication format for scientific and technical writing, native to the web.
 
