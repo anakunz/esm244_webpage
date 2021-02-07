@@ -1,7 +1,7 @@
 ---
-title: "Curriculum Vitae"
+title: "About"
 description: |
-  Interests | Education| Work Experience | Publications
+  Background 
 
 ---
 
@@ -10,20 +10,13 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
 
 
-# Interests
-
- * Career goals center around utilizing spatial data to foster sustainable use of our marine systems
- * Currently living and working in Santa Barbara, California
- * Avid beach volleyball player and aspiring surfer
- 
-# Education
-
-  *Expected 2022* ~ Masters of Environmental Science and Management **Bren School of Environmental Science & Management, University of California, Santa Barbara** Specialization in Coastal Marine Resource Management and Conservation Planning
+# A general about me paragraph
   
-  *2018*  ~ Bachelors of Science from **University of California, Los Angeles**
-  
-  
+- UCLA biology, environmental systems and society, New Zealand, Farmers Market, Undergraduate research, Division I Beach volleyball
 
+- After graduating and taking time off to travel, applied to NASA DEVELOP, a dual capacity building program under NASA's applied sciences division. At the Fort Collins Node at Colorado State University, Anastasia gained research on 3 separate projects that utilized remote sensing to address environmental and public policy issues.
+
+- In her first project, Anastasia worked with the USDA Agricultural Research Service
 
 
 
