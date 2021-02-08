@@ -1,7 +1,7 @@
 ---
-title: "This is my first project/blog"
+title: "Project/Blog Title"
 description: |
-  Maybe put in urchins project from 2016?
+  Brief summary of edited project.
 author:
   - name: Anastasia Kunz
 date: 01-19-2021
@@ -21,7 +21,7 @@ knitr::opts_chunk$set(echo = FALSE)
 Edits happen here.
 
 ## Tab 2:
-how does this work?
+more text and such.
 
 
 

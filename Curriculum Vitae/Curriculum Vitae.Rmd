@@ -22,9 +22,7 @@ library(vitae)
 
 ## Interests
 
- * Career goals center around utilizing spatial data to foster sustainable use of our marine systems
- * Currently living and working in Santa Barbara, California
- * Avid beach volleyball player and aspiring surfer
+ * Anastasia aspires to utilize spatial data to foster sustainable use of our marine systems. She currently lives and works in Santa Barbara, Californiawhere she enjoys playing beach volleyball, hiking, and surfing.
 
 ## Education
 
