@@ -1,7 +1,7 @@
 ---
 title: "California Cetaceans Species Richness"
 description: |
-  A short description of the post.
+  Spatial analysis of species richness for 35 cetacean species along the California Bight.
 author:
   - name: Anastasia Kunz
 date: 02-23-2021
@@ -61,11 +61,11 @@ species_sum_df <-  raster::rasterToPoints(rast_sum) %>%
 
 ```
 
-```{r, fig.cap= " Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness."}
+```{r, fig.cap= "Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness."}
 
 ggplot()+
   geom_raster(data = species_sum_df, aes(x = x, y = y, fill = layer))+
-  scale_fill_gradient("Species Richness", low = "darkblue", high = "cyan2") +
+  scale_fill_gradient("Number of Species", low = "darkblue", high = "cyan2") +
   geom_sf(data = coastline, fill = "burlywood1")+
   coord_sf(xlim = c(-124.8,-115.5), ylim = c(32,38)) +
   theme_minimal()+

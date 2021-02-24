@@ -11,7 +11,7 @@ navbar:
       href: about.html
     - text: "CV"
       href: Curriculum Vitae/Curriculum-Vitae.html
-    - text: "Details"
+    - text: "Projects"
       href: details.html
 output: distill::distill_article
 theme: postcards.css

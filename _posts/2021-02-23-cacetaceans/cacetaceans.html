@@ -87,7 +87,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_meta_tags-->
   <title>California Cetaceans Species Richness</title>
 
-  <meta property="description" itemprop="description" content="A short description of the post."/>
+  <meta property="description" itemprop="description" content="Spatial analysis of species richness for 35 cetacean species along the California Bight."/>
 
 
   <!--  https://schema.org/Article -->
@@ -98,19 +98,19 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="California Cetaceans Species Richness"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="A short description of the post."/>
+  <meta property="og:description" content="Spatial analysis of species richness for 35 cetacean species along the California Bight."/>
   <meta property="og:locale" content="en_US"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
   <meta property="twitter:title" content="California Cetaceans Species Richness"/>
-  <meta property="twitter:description" content="A short description of the post."/>
+  <meta property="twitter:description" content="Spatial analysis of species richness for 35 cetacean species along the California Bight."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["California Cetaceans Species Richness"]},{"type":"character","attributes":{},"value":["A short description of the post.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Anastasia Kunz"]}]}]},{"type":"character","attributes":{},"value":["02-23-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","theme","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["flatly"]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["California Cetaceans Species Richness"]},{"type":"character","attributes":{},"value":["Spatial analysis of species richness for 35 cetacean species along the California Bight.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Anastasia Kunz"]}]}]},{"type":"character","attributes":{},"value":["02-23-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","theme","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["flatly"]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1454,7 +1454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"California Cetaceans Species Richness","description":"A short description of the post.","authors":[{"author":"Anastasia Kunz","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-23T00:00:00.000+00:00","citationText":"Kunz, 2021"}
+{"title":"California Cetaceans Species Richness","description":"Spatial analysis of species richness for 35 cetacean species along the California Bight.","authors":[{"author":"Anastasia Kunz","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}],"publishedDate":"2021-02-23T00:00:00.000+00:00","citationText":"Kunz, 2021"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1467,7 +1467,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <h1>California Cetaceans Species Richness</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>A short description of the post.</p></p>
+<p><p>Spatial analysis of species richness for 35 cetacean species along the California Bight.</p></p>
 </div>
 
 <div class="d-byline">
@@ -1477,7 +1477,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h2 id="cetacean-species-along-the-california-bight">Cetacean Species Along the California Bight</h2>
+<h3 id="cetacean-species-along-the-california-bight">Cetacean Species Along the California Bight</h3>
 <p>Species richness is a measure of the number of species within a given region. This analysis of 35 cetaceans shows the probability of occurrence based on relative environmental suitability, including species preferences for water temperature, depth, salinity, and distance to land along the California Bight.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
@@ -1529,7 +1529,7 @@ hide
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>geom_raster</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>species_sum_df</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, fill <span class='op'>=</span> <span class='va'>layer</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
-  <span class='fu'>scale_fill_gradient</span><span class='op'>(</span><span class='st'>"Species Richness"</span>, low <span class='op'>=</span> <span class='st'>"darkblue"</span>, high <span class='op'>=</span> <span class='st'>"cyan2"</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'>scale_fill_gradient</span><span class='op'>(</span><span class='st'>"Number of Species"</span>, low <span class='op'>=</span> <span class='st'>"darkblue"</span>, high <span class='op'>=</span> <span class='st'>"cyan2"</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_sf</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>coastline</span>, fill <span class='op'>=</span> <span class='st'>"burlywood1"</span><span class='op'>)</span><span class='op'>+</span>
   <span class='fu'>coord_sf</span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='op'>-</span><span class='fl'>124.8</span>,<span class='op'>-</span><span class='fl'>115.5</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>32</span>,<span class='fl'>38</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>theme_minimal</span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
@@ -1547,7 +1547,7 @@ Figure 1:  Cetaceans species richness based on species occurence probability dat
 </p>
 </div>
 </div>
-<h3 id="data-citation">Data Citation</h3>
+<h4 id="data-citation">Data Citation</h4>
 <p>Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., &amp; Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org</p>
 <p>Made with Natural Earth.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
