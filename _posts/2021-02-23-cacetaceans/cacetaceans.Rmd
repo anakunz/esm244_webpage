@@ -1,0 +1,85 @@
+---
+title: "California Cetaceans Species Richness"
+description: |
+  A short description of the post.
+author:
+  - name: Anastasia Kunz
+date: 02-23-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    theme: flatly
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+library(raster)
+library(tidyverse)
+library(here)
+library(sf)
+library(fasterize)
+library(rnaturalearth)
+
+```
+
+
+## Cetacean Species Along the California Bight
+
+Species richness is a measure of the number of species within a given region. This analysis of 35 cetaceans shows the probability of occurrence based on relative environmental suitability, including species preferences for water temperature, depth, salinity, and distance to land along the California Bight. 
+
+
+```{r, echo = TRUE, results = "hide"}
+coastline <- ne_download(scale = 50, type = 'land', category = 'physical', returnclass = "sf")
+```
+
+
+```{r}
+cetaceans <- list.files(path = here("ca_cetaceans"), full.names = TRUE)
+
+
+#create a stack of all rasters
+cetaceans_rast <- raster::stack(cetaceans)
+
+# create the vector containing elements to make a matrix
+reclass <- c(0, 0.59, 0, 0.6, 1, 1)
+
+#make the matrix out of the vector
+matrix_reclass <- matrix(reclass, ncol = 3, byrow = TRUE)
+
+#reclassify the rasters in the stack based on the threshold
+presence_rast <- reclassify(cetaceans_rast, matrix_reclass)
+
+# add up all the values from the reclassified rasters into a single raster
+rast_sum <- raster::calc(cetaceans_rast, fun = sum, na.rm = TRUE)
+
+# create data frame
+species_sum_df <-  raster::rasterToPoints(rast_sum) %>% 
+  as.data.frame()
+
+
+```
+
+```{r, fig.cap= " Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness."}
+
+ggplot()+
+  geom_raster(data = species_sum_df, aes(x = x, y = y, fill = layer))+
+  scale_fill_gradient("Species Richness", low = "darkblue", high = "cyan2") +
+  geom_sf(data = coastline, fill = "burlywood1")+
+  coord_sf(xlim = c(-124.8,-115.5), ylim = c(32,38)) +
+  theme_minimal()+
+  labs(
+    x = " ",
+    y = " "
+  )
+  
+```
+
+
+### Data Citation
+
+Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., & Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org
+
+Made with Natural Earth.
+

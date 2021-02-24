@@ -1,32 +1,115 @@
 ---
-title: "Project/Blog Title"
+title: "Oil Spill Spatial Analysis"
 description: |
-  Brief summary of edited project.
+  Spatial analysis of oil spills in California.
 author:
   - name: Anastasia Kunz
-date: 01-19-2021
+date: 02-21-2021
 output:
   distill::distill_article:
     self_contained: false
+    theme: flatly
+    code_folding: hide
 ---
 
 
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
+library(tidyverse)
+library(tmap)
+library(here)
+library(sf)
+library(janitor)
+library(lubridate)
+library(viridis)
+```
+
+## Oil Spills Spatial Exploration
+
+Explore occurrence data for California oil spills in 2008 through the interactive map below.
+
+```{r}
+# Read in the data:
+oilspill <- read_sf(here("oil_spill_data"),
+                    layer = "Oil_Spill_Incident_Tracking_%5Bds394%5D") %>% 
+  clean_names() %>% 
+  mutate(date = as.Date(dateofinci)) %>% 
+  mutate(date = ymd(date)) %>% 
+  rename(name = localecoun) %>% 
+  select(name, date, inlandmari)
+
+counties <- read_sf(here("ca_counties"),
+                    layer = "CA_Counties_TIGER2016") %>% 
+  clean_names() %>% 
+  select(name)
+
 
 ```
 
-## THIS IS WHERE I WILL INPUT A PROJECT 
-Edits happen here.
+```{r, include=FALSE}
 
-## Tab 2:
-more text and such.
+# Check projection
+st_crs(oilspill)
+
+# Set Counties CRS
+counties <- st_transform(counties, st_crs(oilspill))
 
 
 
-Distill is a publication format for scientific and technical writing, native to the web.
+```
 
-Learn more about using Distill at <https://rstudio.github.io/distill>.
+
+```{r}
+
+tmap_mode("view")
+
+tm_shape(counties)+
+  tm_polygons(alpha = 0.4)+
+  tm_shape(oilspill)+
+  tm_dots(col = "red", scale = .8, alpha = 0.6)+
+  tm_basemap("Esri.WorldTopoMap")
+  
+
+```
+
+
+
+
+```{r}
+oil_counties <- counties %>% 
+  st_join(oilspill) %>% 
+  count(name.x, inlandmari) %>% 
+  filter(inlandmari == "Inland")
+```
+
+
+## County Oil Spills Choropleth Map
+
+Some California counties have much higher concentrations of inland oil spills than others. The choropleth map below shows the number of inland oil spills for each California county. 
+
+```{r}
+
+ggplot()+
+  
+  geom_sf(data = counties)+
+  geom_sf(data = oil_counties, aes(fill = n))+
+  scale_fill_viridis("Number of Oilspills", option = "plasma")+
+  theme_void()+
+  labs(
+    title = "Inland Oilspills in California by County"
+  )
+  
+
+
+
+```
+
+
+
+### Data Citation
+
+California Department of Fish and Game, Office of Spill Prevention and Response. Oil Spill Incident Tracking [ds394] (2008).
+
 
 
