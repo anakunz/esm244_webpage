@@ -1,0 +1,179 @@
+---
+title: "Global Wild Fish Catch"
+description: |
+  An analysis of global wild fish catch using nonlinear least squares.
+author:
+  - name: Anastasia Kunz
+    url: {}
+date: 03-06-2021
+output:
+  distill::distill_article:
+    self_contained: false
+    theme: flatly
+    code_folding: hide
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(here)
+library(janitor)
+library(nlstools)
+library(tsibble)
+library(lubridate)
+library(gt)
+```
+
+
+This analysis utilizes nonlinear least squares to analyze the Earth Policy Institute's 1950 - 2012 wild fish catch data from the U.N. Food and Agriculture Organization. 
+
+```{r}
+fish_catch <- read_csv(here("global_fish", "fish_catch.csv"), skip = 4) %>% 
+  select(X1, X2) %>% 
+  rename(year = X1,
+         wild_catch = X2) %>% 
+  head(-4) %>% 
+  mutate(year = as.numeric(year))
+
+```
+
+### Data Exploration: Wild Fish Catch Time Series & Parameter Estimation
+
+```{r}
+# make time series of fish catch
+ggplot(fish_catch, aes(x = year, y = wild_catch))+
+  geom_line()+
+  theme_minimal()+
+  labs(
+    x = "Year",
+    y = "Fish Catch (Million Tons)",
+    title = "Global Wild Fish Catch",
+    subtitle = "1950 - 2012"
+  )
+```
+
+This time series shows a general increasing trend through time, which looks roughly like logistic growth. The data set, starting at 1950, shows initial wild fish catch at around 10 million tons. Wild fish catch increases near exponentially until around 1980, where catch starts to level off at around 95 million tons.
+
+Therefore, we can use $P(t)=\frac{K}{1+Ae^{-kt}}$ as our equation for wild fish catch through time and estimate parameters based off of the graph above.
+
+**K Estimate**
+
+Wild fish catch levels off around 1990, at about 90 to 95 million tons of wild fish catch per year. *So the estimate for K will be 95 million tons.*
+
+**A Estimate**
+
+Based on our equation where $A$ = $\frac{K-P_0}{P_0}$, the population at "time zero" or in 1950 is around 10 million tons. So we can *estimate A to be* $\frac{95 - 10}{10}$ *= about 8.5.*
+
+**k Estimate**
+
+We can estimate *k* by looking at the log of wild fish catch pre 1990 (shown below) to find the growth rate. *Here we estimate k to be 0.035623.*
+
+```{r}
+
+ # look at data to get a sense of how to estimate k
+ggplot(data = fish_catch, aes(x = year, y = log(wild_catch))) +
+  geom_point() +
+  theme_minimal()+
+  labs(
+    x = "Log of Wild Fish Catch",
+    y = "Year",
+    title = "Log Transformed Wild Fish Catch by Year"
+  )
+
+
+fish_exp <- fish_catch %>% 
+  filter(year < 1990) %>% 
+  mutate(ln_fish = log(wild_catch))
+
+lm_fish <- lm(ln_fish ~ year, data = fish_exp)
+
+
+```
+
+
+
+
+
+```{r, results = FALSE}
+
+#update to year starting at 0 instead of 1950
+
+fish_catch_nls <- fish_catch %>% 
+  mutate(year = (year - 1950))
+
+fish_nls <- nls(wild_catch ~ K/(1 + A*exp(-r*year)),
+              data = fish_catch_nls,
+              start = list(K = 95, A = 8.5, r = 0.035623),
+              trace = TRUE
+              )
+
+#summary(fish_nls)
+
+fish_output <- broom::tidy(fish_nls) 
+
+A_estimate <- fish_output$estimate[2]
+```
+
+
+
+### Nonlinear Least Squares Model Outputs and Prediction
+
+Using nonlinear least squares, the graph and table below shows the model outputs and visualization of the nonlinear least squares prediction.
+
+#### Table of Results
+
+```{r}
+fish_output %>% 
+  gt() %>% 
+  tab_header(
+    title = "Nonlinear Least Squares Model Outputs"
+  ) %>% 
+  fmt_number(
+    columns = vars(estimate, std.error, statistic),
+    decimals = 2
+  ) %>% 
+  fmt_scientific(
+    columns = vars(p.value),
+    decimals = 2
+  ) %>% 
+  tab_options(table.width = pct(70)) %>% 
+  cols_label(
+    term = "Term",
+    estimate = "Estimate",
+    std.error = "Standard Error",
+    statistic = "Statistic",
+    p.value = "P-Value"
+  )
+
+```
+
+
+
+
+#### Visualization of Prediction and Original Data
+
+```{r}
+fish_predict <- predict(fish_nls)
+
+# combine data frames into one to plot
+fish_catch_complete <- data.frame(fish_catch, fish_predict)
+
+ggplot(data = fish_catch_complete, aes(x = year, y = wild_catch)) +
+  geom_point() +
+  geom_line(aes(x = year, y = fish_predict), color  = "darkred") +
+  theme_classic()+
+  labs(
+    x = "Year",
+    y = "Wild Catch (Million Tons)",
+    title = "Global Wild Fish Catch and Nonlinear Least Squares Model",
+    subtitle = "1950 - 2012"
+  )+
+  theme(panel.grid.major = element_line())
+
+```
+
+
+
+### Data Citation 
+Global wild fish catch and aquaculture production, compiled by Earth Policy Institute with 1950-2010 from U.N. Food and Agriculture Organization (FAO), Global Capture Production and Global Aquaculture Production, electronic databases, at www.fao.org/fishery/topic/16140/en.

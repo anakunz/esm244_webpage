@@ -40,27 +40,26 @@ tribble(
 ## Selected Work Experience
 
 ```{r}
+library(tibble)
 tribble(
-  ~Year, ~Type, ~Desc,
-  2019, "Project Lead", "~ Leading a team of interdisciplanary researchers, Anastasia worked under NASA DEVELOP to create an ArcGIS Toolbox to assist the USGS and National Park Service in monitoring harmful eutrophication and resultant algal blooms in Rocky Mountain National Park alpine lakes",
-  2018, "Geospatial Researcher", "~ In her first project with NASA DEVELOP, Anastasia worked with the USDA Agricultural Research Service to improve species distribution modeling of crop wild relatives for the National Plant Germplasm System, utilizing NASA Earth observations and European Space Agency satellite imagery.",
-  2015, "Undergraduate Researcher", "~ Developed personal research project studying therapeutic strategies combatting toxic ⍺-synuclein oligomers characteristic to Parkinson’s disease contributing to a larger study published in Journal of Neuroscience Research."
+  ~ What, ~ Year, ~ Location, ~ Position,
+  "Leading a team of interdisciplanary researchers, Anastasia worked under NASA DEVELOP to create an ArcGIS Toolbox to assist the USGS and National Park Service in monitoring harmful eutrophication and resultant algal blooms in Rocky Mountain National Park alpine lakes", "2019", "NASA DEVELOP ~ Fort Collins, Colorado", "Project Lead",
+  "In her first project with NASA DEVELOP, Anastasia worked with the USDA Agricultural Research Service to improve species distribution modeling of crop wild relatives for the National Plant Germplasm System, utilizing NASA Earth observations and European Space Agency satellite imagery.", "2018", "NASA DEVELOP ~ Fort Collins, Colorado", "Geospatial Researcher",
+  "Developed personal research project studying therapeutic strategies combatting toxic ⍺-synuclein oligomers characteristic to Parkinson’s disease contributing to a larger study published in Journal of Neuroscience Research.", "2015", "UCLA ~ Los Angeles, California", "Undergraduate Researcher"
 ) %>% 
-  brief_entries(
-    glue::glue("  {Type}"),
-    Year, 
-    Desc
-  )
+  detailed_entries(What, Year, Location, Position)
 ```
 
 ## Publications
 
-```{r}
-library(dplyr)
-knitr::write_bib(c("vitae", "tibble"), "packages.bib")
 
-bibliography_entries("packages.bib") %>%
-  arrange(desc(author$family), issued)
-# HOW DO I INPUT MY OWN PUBLICATIONS???
+```{r}
+library(tibble)
+tribble(
+  ~ Title, ~ Year, ~ Journal, ~ Authors,
+  "Enhanced mitochondrial inhibition by 3,4-dihydroxyphenyl-acetaldehyde (DOPAL)-oligomerized α-synuclein.", "2019", "J Neuro Res. 00: 1– 17. https://doi.org/10.1002/jnr.24513", "Sarafian, TA, Yacoub, A, Kunz, A, et al.",
+  "Detecting Wisconsin’s Wild Cranberries from Space.", "2019", "Chronica Horticulturae. 59(3): 13-17.", "Kunz, A, Martín, V, Pepper, N, Simonson, E, Young, N & Evangelista, P."
+) %>% 
+  detailed_entries(Title, Year, Journal, Authors)
 ```
 
