@@ -4,7 +4,7 @@ description: |
   This project analyzes the physiological characteristics of two palmetto species, then shows the accuracy of a binary logistic regression model in differentiating between the two.
 author:
   - name: Anastasia Kunz
-date: 03-07-2021
+date: 02-02-2021
 output:
   distill::distill_article:
     self_contained: false
