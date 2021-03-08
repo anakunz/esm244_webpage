@@ -8,6 +8,8 @@ date: 02-21-2021
 output:
   distill::distill_article:
     self_contained: false
+    toc: true
+    toc_float: true
     theme: flatly
     code_folding: hide
 ---
@@ -31,7 +33,7 @@ Explore occurrence data for California oil spills in 2008 through the interactiv
 
 ```{r}
 # Read in the data:
-oilspill <- read_sf(here("oil_spill_data"),
+oilspill <- st_read(here("oil_spill_data"),
                     layer = "Oil_Spill_Incident_Tracking_%5Bds394%5D") %>% 
   clean_names() %>% 
   mutate(date = as.Date(dateofinci)) %>% 

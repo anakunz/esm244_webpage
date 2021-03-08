@@ -22,7 +22,7 @@ library(vitae)
 
 ## Interests
 
- * Anastasia aspires to utilize spatial data to foster sustainable use of our marine systems. She currently lives and works in Santa Barbara, California where she enjoys playing beach volleyball, hiking, and surfing.
+Anastasia aspires to utilize spatial data to foster sustainable use of our marine systems. She currently lives and works in Santa Barbara, California where she enjoys playing beach volleyball, hiking, and surfing.
 
 ## Education
 
@@ -30,9 +30,9 @@ library(vitae)
 library(tibble)
 tribble(
   ~ Degree, ~ Year, ~ Institution, ~ Where,
-  "Masters of Environmental Science and Management", "Expected 2022", "Donald Bren School at University of California, Santa Barbara", "Santa Barbara, California",
-  "Bachelors of Science", "2018", "University of California, Los Angeles", "Los Angeles, California",
-  "Education Abroad", "2016", "Lincoln University", "Lincoln, New Zealand"
+  "Donald Bren School at University of California, Santa Barbara", "Expected 2022", "Santa Barbara, California", "Masters of Environmental Science and Management",
+  "University of California, Los Angeles", "2018", "Los Angeles, California", "Bachelors of Science",
+  "Lincoln University", "2016", "Lincoln, New Zealand", "Education Abroad"
 ) %>% 
   detailed_entries(Degree, Year, Institution, Where)
 ```
