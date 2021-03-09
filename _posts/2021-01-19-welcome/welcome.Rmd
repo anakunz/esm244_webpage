@@ -25,13 +25,14 @@ library(sf)
 library(janitor)
 library(lubridate)
 library(viridis)
+library(sp)
 ```
 
 ## Oil Spills Spatial Exploration
 
 Explore occurrence data for California oil spills in 2008 through the interactive map below.
 
-```{r}
+```{r, results = FALSE}
 # Read in the data:
 oilspill <- st_read(here("oil_spill_data"),
                     layer = "Oil_Spill_Incident_Tracking_%5Bds394%5D") %>% 
@@ -41,7 +42,7 @@ oilspill <- st_read(here("oil_spill_data"),
   rename(name = localecoun) %>% 
   select(name, date, inlandmari)
 
-counties <- read_sf(here("ca_counties"),
+counties <- st_read(here("ca_counties"),
                     layer = "CA_Counties_TIGER2016") %>% 
   clean_names() %>% 
   select(name)
@@ -93,7 +94,6 @@ Some California counties have much higher concentrations of inland oil spills th
 ```{r}
 
 ggplot()+
-  
   geom_sf(data = counties)+
   geom_sf(data = oil_counties, aes(fill = n))+
   scale_fill_viridis("Number of Oilspills", option = "plasma")+

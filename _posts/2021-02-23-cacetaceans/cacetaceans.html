@@ -110,12 +110,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["California Cetaceans Species Richness"]},{"type":"character","attributes":{},"value":["Spatial analysis of species richness for 35 cetacean species along the California Bight.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Anastasia Kunz"]}]}]},{"type":"character","attributes":{},"value":["02-23-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","theme","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["flatly"]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","author","date","output"]}},"value":[{"type":"character","attributes":{},"value":["California Cetaceans Species Richness"]},{"type":"character","attributes":{},"value":["Spatial analysis of species richness for 35 cetacean species along the California Bight.\n"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Anastasia Kunz"]}]}]},{"type":"character","attributes":{},"value":["02-23-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","toc","theme","code_folding"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["flatly"]},{"type":"character","attributes":{},"value":["hide"]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["cacetaceans_files/anchor-4.2.2/anchor.min.js","cacetaceans_files/bowser-1.9.3/bowser.min.js","cacetaceans_files/distill-2.2.21/template.v2.js","cacetaceans_files/figure-html5/unnamed-chunk-3-1.png","cacetaceans_files/header-attrs-2.6.6/header-attrs.js","cacetaceans_files/jquery-1.11.3/jquery.min.js","cacetaceans_files/popper-2.6.0/popper.min.js","cacetaceans_files/tippy-6.2.7/tippy-bundle.umd.min.js","cacetaceans_files/tippy-6.2.7/tippy-light-border.css","cacetaceans_files/tippy-6.2.7/tippy.css","cacetaceans_files/tippy-6.2.7/tippy.umd.min.js","cacetaceans_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["cacetaceans_files/anchor-4.2.2/anchor.min.js","cacetaceans_files/bowser-1.9.3/bowser.min.js","cacetaceans_files/distill-2.2.21/template.v2.js","cacetaceans_files/figure-html5/unnamed-chunk-3-1.png","cacetaceans_files/header-attrs-2.6.6/header-attrs.js","cacetaceans_files/header-attrs-2.7/header-attrs.js","cacetaceans_files/jquery-1.11.3/jquery.min.js","cacetaceans_files/popper-2.6.0/popper.min.js","cacetaceans_files/tippy-6.2.7/tippy-bundle.umd.min.js","cacetaceans_files/tippy-6.2.7/tippy-light-border.css","cacetaceans_files/tippy-6.2.7/tippy.css","cacetaceans_files/tippy-6.2.7/tippy.umd.min.js","cacetaceans_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1433,7 +1433,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="cacetaceans_files/header-attrs-2.6.6/header-attrs.js"></script>
+  <script src="cacetaceans_files/header-attrs-2.7/header-attrs.js"></script>
   <script src="cacetaceans_files/jquery-1.11.3/jquery.min.js"></script>
   <script src="cacetaceans_files/popper-2.6.0/popper.min.js"></script>
   <link href="cacetaceans_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1477,7 +1477,18 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </div>
 
 <div class="d-article">
-<h3 id="cetacean-species-along-the-california-bight">Cetacean Species Along the California Bight</h3>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#cetacean-species-along-the-california-bight">Cetacean Species Along the California Bight</a>
+<ul>
+<li><a href="#data-citation">Data Citation</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<h2 id="cetacean-species-along-the-california-bight">Cetacean Species Along the California Bight</h2>
 <p>Species richness is a measure of the number of species within a given region. This analysis of 35 cetaceans shows the probability of occurrence based on relative environmental suitability, including species preferences for water temperature, depth, salinity, and distance to land along the California Bight.</p>
 <div class="layout-chunk" data-layout="l-body">
 <details>
@@ -1496,7 +1507,7 @@ hide
 hide
 </summary>
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cetaceans</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/here/man/here.html'>here</a></span><span class='op'>(</span><span class='st'>"ca_cetaceans"</span><span class='op'>)</span>, full.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>cetaceans</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.files.html'>list.files</a></span><span class='op'>(</span>path <span class='op'>=</span> <span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>"ca_cetaceans"</span><span class='op'>)</span>, full.names <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 
 <span class='co'>#create a stack of all rasters</span>
@@ -1541,13 +1552,13 @@ hide
 </div>
 </details>
 <div class="figure"><span id="fig:unnamed-chunk-3"></span>
-<img src="cacetaceans_files/figure-html5/unnamed-chunk-3-1.png" alt=" Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness." width="624" />
+<img src="cacetaceans_files/figure-html5/unnamed-chunk-3-1.png" alt="Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness." width="624" />
 <p class="caption">
-Figure 1:  Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness.
+Figure 1: Cetaceans species richness based on species occurence probability data from AquaMaps. Species presence is determined by a probability threshold of 0.6 or greater for individual species, and summed over all 35 species to create a raster of richness.
 </p>
 </div>
 </div>
-<h4 id="data-citation">Data Citation</h4>
+<h3 id="data-citation">Data Citation</h3>
 <p>Kaschner, K., Rius-Barile, J., Kesner-Reyes, K., Garilao, C., Kullander, S., Rees, T., &amp; Froese, R. (2016). AquaMaps: Predicted range maps for aquatic species. www.aquamaps.org</p>
 <p>Made with Natural Earth.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
